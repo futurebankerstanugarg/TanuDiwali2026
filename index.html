@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101317">
-  <meta name="description" content="Tanu’s Diwali home trip countdown: Bengaluru to Chandigarh, then Maur, Bathinda, Punjab, and back.">
+  <meta name="description" content="Tanu’s Diwali home trip countdown: Bengaluru to Chandigarh (BLR Terminal 2), then Maur, Bathinda, Punjab, and back.">
   <title>Tanu’s Trip Timeline | Air India Express</title>
   <style>
     :root {
@@ -57,11 +57,14 @@
     .airport-code { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; letter-spacing: .1em; }
     .duration { color: var(--muted); font-size: 10px; text-align: center; white-space: nowrap; }
     .checkin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 17px; }
-    .checkin-item { padding: 12px 13px; border: 1px solid var(--line); border-radius: 11px; background: rgba(255,255,255,.018); }
-    .checkin-item:last-child { grid-column: 1 / -1; }
+    .checkin-item { padding: 8px 10px; border: 1px solid var(--line); border-radius: 11px; background: rgba(255,255,255,.018); }
+    .checkin-item.online-checkin { grid-column: 1 / -1; display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px 9px; padding: 7px 11px; background: transparent; border-style: dashed; }
+    .online-checkin .checkin-label { font-size: 9px; letter-spacing: .06em; }
+    .online-checkin .checkin-time { display: inline; margin: 0; font-size: 12px; }
+    .online-checkin .checkin-date { display: inline; margin: 0; font-size: 10px; }
     .checkin-label { display: block; color: var(--muted); font-size: 10px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
-    .checkin-time { display: block; margin-top: 5px; font-size: 15px; font-weight: 650; font-variant-numeric: tabular-nums; }
-    .checkin-date { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; }
+    .checkin-time { display: block; margin-top: 3px; font-size: 13px; font-weight: 650; font-variant-numeric: tabular-nums; }
+    .checkin-date { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; }
     .locked { background: #20262e; border: 1px dashed #46515c; border-radius: 13px; min-height: 112px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 18px; color: var(--muted); }
     .lock-title { color: #dce1e6; font-size: 14px; font-weight: 650; }
     .lock-copy { margin-top: 6px; font-size: 12px; line-height: 1.6; }
@@ -73,10 +76,16 @@
     .milestone strong { display: block; font-size: 12px; font-weight: 650; }
     .milestone span { display: block; color: var(--muted); font-size: 11px; margin-top: 4px; }
     .bus-options { margin-top: 20px; border: 1px solid var(--line); border-radius: 15px; background: var(--card); overflow: hidden; }
-    .bus-options summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 17px 18px; color: var(--ink); font-size: 13px; font-weight: 650; }
+    .bus-options summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 19px 18px; color: var(--ink); font-size: 15px; font-weight: 800; background: linear-gradient(105deg, rgba(232,107,54,.27), rgba(232,107,54,.09) 58%, rgba(255,255,255,.035)); border: 1.5px solid rgba(232,107,54,.72); border-radius: 15px; box-shadow: 0 0 0 3px rgba(232,107,54,.07), 0 8px 22px rgba(0,0,0,.18); }
     .bus-options summary::-webkit-details-marker { display: none; }
-    .bus-options summary::after { content: "+"; color: var(--brand-orange); font-size: 21px; font-weight: 400; }
-    .bus-options[open] summary::after { content: "−"; }
+    .bus-summary-main { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .bus-icon { width: 44px; height: 44px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 11px; background: rgba(232,107,54,.18); color: #f29a70; font-size: 19px; }
+    .bus-summary-copy { display: block; min-width: 0; }
+    .bus-summary-title { display: block; }
+    .bus-summary-sub { display: block; margin-top: 5px; color: #c4cbd2; font-size: 11px; font-weight: 500; line-height: 1.45; }
+    .bus-options summary::after { content: "VIEW"; color: #ffad83; font-size: 10px; letter-spacing: .1em; font-weight: 400; }
+    .bus-options[open] summary { border-radius: 15px 15px 0 0; }
+    .bus-options[open] summary::after { content: "CLOSE"; }
     .bus-content { padding: 0 16px 16px; }
     .bus-card { border: 1px solid var(--line); border-radius: 11px; padding: 14px; background: rgba(255,255,255,.018); margin-top: 10px; }
     .bus-direction { color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
@@ -99,6 +108,7 @@
       .unit-name { font-size: 9px; }
       .checkin-grid { gap: 7px; }
       .checkin-item { padding: 10px; }
+      .online-checkin { gap: 4px 7px !important; }
       .checkin-time { font-size: 14px; }
       .year { font-size: 10px; }
     }
@@ -115,6 +125,28 @@
       </div>
       <div class="year">NOVEMBER<br>2026</div>
     </header>
+
+    <details class="bus-options">
+      <summary>
+        <span class="bus-summary-main"><span class="bus-icon" aria-hidden="true">↗</span><span class="bus-summary-copy"><span class="bus-summary-title">Airport bus options · Tap to expand</span><span class="bus-summary-sub">Recommended BMTC Vayu Vajra services for both journeys</span></span></span>
+      </summary>
+      <div class="bus-content">
+        <div class="bus-card">
+          <div class="bus-direction">Outbound · Saturday, 7 November · Home to airport</div>
+          <div class="bus-route">KIA-8H · Attibele route</div>
+          <div class="bus-time">04:25 AM service · Board around 04:50 AM</div>
+          <div class="bus-note">Expected at Bengaluru Airport T2 by about 07:10 AM — exactly 2 hours before the 09:10 AM flight. Please confirm the boarding stop and live service timing before leaving.</div>
+        </div>
+        <div class="bus-card">
+          <div class="bus-direction">Return · Tuesday, 17 November · Airport to home</div>
+          <div class="bus-route">KIA-8D · Sarjapura Bus Station route</div>
+          <div class="bus-time">05:30 AM · From Bengaluru Airport T2</div>
+          <div class="bus-note">After landing at 03:50 AM, this is the suggested return bus. Expected to reach home around 08:00 AM, depending on the stop and traffic.</div>
+        </div>
+        <a class="bus-link" href="https://kias.mybmtc.com/timetable.php" target="_blank" rel="noopener noreferrer">Open official BMTC Vayu Vajra timetable ↗</a>
+        <div class="bus-source">Route numbers and indicative timings are based on the Vayu Vajra frequency chart supplied for this trip (effective 17 September 2026). The 04:50 AM boarding time, 07:10 AM airport arrival and 08:00 AM home arrival are planning estimates, not guaranteed stop timings. Confirm the exact stop and latest service before travelling.</div>
+      </div>
+    </details>
 
     <section class="journey" aria-labelledby="outbound-title">
       <div class="journey-top">
@@ -134,14 +166,14 @@
       </div>
       <div class="status"><span class="dot"></span><span id="out-status">Scheduled · 09:10 AM IST</span></div>
       <div class="flight-details">
-        <div class="airport"><span class="time">09:10 AM</span><span class="airport-code">BLR · DEPARTURE</span></div>
+        <div class="airport"><span class="time">09:10 AM</span><span class="airport-code">BENGALURU T2 · DEPARTURE</span></div>
         <div class="duration">NON-STOP<br>3h 10m</div>
         <div class="airport"><span class="time">12:20 PM</span><span class="airport-code">IXC · ARRIVAL</span></div>
       </div>
       <div class="checkin-grid" aria-label="Outbound check-in information">
         <div class="checkin-item"><span class="checkin-label">Recommended airport arrival</span><span class="checkin-time">07:10 AM</span><span class="checkin-date">2 hours before · Saturday, 7 November</span></div>
         <div class="checkin-item"><span class="checkin-label">Aim to finish airport check-in by</span><span class="checkin-time">08:10 AM</span><span class="checkin-date">60 minutes before departure</span></div>
-        <div class="checkin-item"><span class="checkin-label">Online check-in opens · 48 hours before</span><span class="checkin-time">09:10 AM</span><span class="checkin-date">Thursday · 5 November</span></div>
+        <div class="checkin-item online-checkin"><span class="checkin-label">Online check-in opens · 48 hours before</span><span class="checkin-time">09:10 AM</span><span class="checkin-date">Thursday, 5 November</span></div>
       </div>
     </section>
 
@@ -168,34 +200,16 @@
       <div class="flight-details">
         <div class="airport"><span class="time">12:35 AM</span><span class="airport-code">IXC · DEPARTURE</span></div>
         <div class="duration">NON-STOP<br>3h 15m</div>
-        <div class="airport"><span class="time">03:50 AM</span><span class="airport-code">BLR · ARRIVAL</span></div>
+        <div class="airport"><span class="time">03:50 AM</span><span class="airport-code">BENGALURU T2 · ARRIVAL</span></div>
       </div>
       <div class="checkin-grid" aria-label="Return check-in information">
         <div class="checkin-item"><span class="checkin-label">Recommended airport arrival</span><span class="checkin-time">10:35 PM</span><span class="checkin-date">2 hours before · Monday, 16 November</span></div>
         <div class="checkin-item"><span class="checkin-label">Aim to finish airport check-in by</span><span class="checkin-time">11:35 PM</span><span class="checkin-date">60 minutes before departure</span></div>
-        <div class="checkin-item"><span class="checkin-label">Online check-in opens · 48 hours before</span><span class="checkin-time">12:35 AM</span><span class="checkin-date">Sunday · 15 November</span></div>
+        <div class="checkin-item online-checkin"><span class="checkin-label">Online check-in opens · 48 hours before</span><span class="checkin-time">12:35 AM</span><span class="checkin-date">Sunday, 15 November</span></div>
       </div>
     </section>
 
-    <details class="bus-options">
-      <summary>View airport bus options · Vayu Vajra</summary>
-      <div class="bus-content">
-        <div class="bus-card">
-          <div class="bus-direction">Outbound · Bengaluru home to airport</div>
-          <div class="bus-route">KIA-8H · Attibele route</div>
-          <div class="bus-time">Around 04:50 AM</div>
-          <div class="bus-note">Suggested time to catch the airport-bound bus near home on 7 November. This is the estimated home-side pickup time for Tanu, not a guaranteed stop timetable. Allow for the journey and traffic before the 09:10 AM flight.</div>
-        </div>
-        <div class="bus-card">
-          <div class="bus-direction">Return · Airport to Bengaluru</div>
-          <div class="bus-route">KIA-8D · Sarjapura Bus Station route</div>
-          <div class="bus-time">Around 05:30 AM</div>
-          <div class="bus-note">Suggested airport departure after the 03:50 AM arrival on 17 November, subject to the bus being available and the destination/stop matching her onward journey.</div>
-        </div>
-        <a class="bus-link" href="https://kias.mybmtc.com/timetable.php" target="_blank" rel="noopener noreferrer">Open official BMTC Vayu Vajra timetable ↗</a>
-        <div class="bus-source">Route numbers and indicative timings are based on the Vayu Vajra frequency chart supplied for this trip (effective 17 September 2026). Check the latest BMTC timetable and the exact boarding stop before travelling.</div>
-      </div>
-    </details>
+
 
     <section class="timeline" aria-label="Trip milestones">
       <div class="milestone" id="mile-out"><strong>7 Nov · 09:10 AM</strong><span>Depart Bengaluru</span></div>
