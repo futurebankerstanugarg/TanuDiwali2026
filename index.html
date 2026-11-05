@@ -75,26 +75,16 @@
     .milestone.done::before { background: var(--accent); border-color: var(--accent); }
     .milestone strong { display: block; font-size: 12px; font-weight: 650; }
     .milestone span { display: block; color: var(--muted); font-size: 11px; margin-top: 4px; }
-    .bus-options { margin-top: 20px; border: 1px solid var(--line); border-radius: 15px; background: var(--card); overflow: hidden; }
-    .bus-options summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 19px 18px; color: var(--ink); font-size: 15px; font-weight: 800; background: linear-gradient(105deg, rgba(232,107,54,.27), rgba(232,107,54,.09) 58%, rgba(255,255,255,.035)); border: 1.5px solid rgba(232,107,54,.72); border-radius: 15px; box-shadow: 0 0 0 3px rgba(232,107,54,.07), 0 8px 22px rgba(0,0,0,.18); }
-    .bus-options summary::-webkit-details-marker { display: none; }
-    .bus-summary-main { display: flex; align-items: center; gap: 12px; min-width: 0; }
-    .bus-icon { width: 44px; height: 44px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 11px; background: rgba(232,107,54,.18); color: #f29a70; font-size: 19px; }
-    .bus-summary-copy { display: block; min-width: 0; }
-    .bus-summary-title { display: block; }
-    .bus-summary-sub { display: block; margin-top: 5px; color: #c4cbd2; font-size: 11px; font-weight: 500; line-height: 1.45; }
-    .bus-options summary::after { content: "VIEW"; color: #ffad83; font-size: 10px; letter-spacing: .1em; font-weight: 400; }
-    .bus-options[open] summary { border-radius: 15px 15px 0 0; }
-    .bus-options[open] summary::after { content: "CLOSE"; }
-    .bus-content { padding: 0 16px 16px; }
-    .bus-card { border: 1px solid var(--line); border-radius: 11px; padding: 14px; background: rgba(255,255,255,.018); margin-top: 10px; }
-    .bus-direction { color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-    .bus-route { margin-top: 5px; font-size: 14px; font-weight: 700; }
-    .bus-time { margin-top: 7px; color: var(--brand-orange); font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
-    .bus-note { margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.55; }
-    .bus-link { display: inline-flex; margin-top: 10px; color: #f29a70; font-size: 11px; font-weight: 650; text-decoration: none; border-bottom: 1px solid rgba(242,154,112,.45); padding-bottom: 2px; }
-    .bus-link:focus-visible, .bus-options summary:focus-visible { outline: 2px solid var(--brand-orange); outline-offset: 3px; border-radius: 4px; }
-    .bus-source { margin: 12px 2px 0; color: var(--muted); font-size: 10px; line-height: 1.55; }
+    .cab-plan { margin: 18px 0; padding: 16px 18px; border: 1px solid #3a4651; border-radius: 15px; background: linear-gradient(115deg, rgba(232,107,54,.12), rgba(255,255,255,.02)); }
+    .cab-head { display: flex; align-items: center; gap: 11px; }
+    .cab-icon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: rgba(232,107,54,.17); font-size: 20px; }
+    .cab-title { font-size: 14px; font-weight: 750; }
+    .cab-sub { margin-top: 3px; color: var(--muted); font-size: 10px; }
+    .cab-times { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+    .cab-times > div { padding: 10px 11px; background: rgba(0,0,0,.14); border: 1px solid var(--line); border-radius: 10px; }
+    .cab-tag { display: block; color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+    .cab-times strong { display: block; margin-top: 5px; font-size: 18px; font-variant-numeric: tabular-nums; }
+    .cab-plan p { margin: 12px 0 0; color: #b6c0c9; font-size: 11px; line-height: 1.6; }
     .note { margin-top: 24px; padding: 13px 15px; border-left: 2px solid var(--brand-orange); background: rgba(255,255,255,.025); color: var(--muted); font-size: 11px; line-height: 1.6; }
     footer { margin-top: 26px; color: #77818b; text-align: center; font-size: 10px; letter-spacing: .04em; }
     @media (max-width: 520px) {
@@ -111,6 +101,7 @@
       .online-checkin { gap: 4px 7px !important; }
       .checkin-time { font-size: 14px; }
       .year { font-size: 10px; }
+      .cab-times { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -119,43 +110,27 @@
     <header>
       <div>
         <div class="brand"><span class="brand-mark">X</span> Air India Express</div>
-        <div class="eyebrow">November 2026 · Diwali Home Trip</div>
-        <h1>Tanu’s Diwali Home Trip</h1>
+        <div class="eyebrow">November 2026 · Diwali home trip</div>
+        <h1>Tanu’s Diwali home trip</h1>
         <div class="home-destination">Home destination · Maur, Bathinda, Punjab</div>
       </div>
       <div class="year">NOVEMBER<br>2026</div>
     </header>
 
-    <details class="bus-options">
-      <summary>
-        <span class="bus-summary-main"><span class="bus-icon" aria-hidden="true">↗</span><span class="bus-summary-copy"><span class="bus-summary-title">Airport bus options · Tap to expand</span><span class="bus-summary-sub">Recommended BMTC Vayu Vajra services for both journeys</span></span></span>
-      </summary>
-      <div class="bus-content">
-        <div class="bus-card">
-          <div class="bus-direction">Outbound · Saturday, 7 November · Home to airport</div>
-          <div class="bus-route">KIA-8H · Attibele route</div>
-          <div class="bus-time">Board around 04:50 AM near Home main road gate.</div>
-          <div class="bus-note">Expected at Bengaluru Airport T2 by about 07:15 AM — exactly 2 hours before the 09:10 AM flight. Please confirm the boarding stop and live service timing before leaving.</div>
-        </div>
-        <div class="bus-card">
-          <div class="bus-direction">Return · Tuesday, 17 November · Airport to home</div>
-          <div class="bus-route">KIA-8D · Sarjapura Bus Station route</div>
-          <div class="bus-time">05:30 AM · From Bengaluru Airport T2</div>
-          <div class="bus-note">After landing at 03:50 AM, this is the suggested return bus. Expected to reach home around 07:40 AM, depending on the stop and traffic.</div>
-        </div>
-        <a class="bus-link" href="https://kias.mybmtc.com/timetable.php" target="_blank" rel="noopener noreferrer">Open official BMTC Vayu Vajra timetable ↗</a>
-        <div class="bus-source">Route numbers and indicative timings are based on the latest Vayu Vajra frequency chart supplied for this trip (effective 17 September 2026). The 04:50 AM boarding time, 07:10 AM airport arrival and 08:00 AM home arrival are planning estimates. Confirm the exact stop and latest service before travelling using myBMTC App or Ricky will share updates..</div>
-      </div>
-    </details>
+    <section class="cab-plan" aria-label="Outbound cab plan">
+      <div class="cab-head"><span class="cab-icon" aria-hidden="true">🚕</span><div><div class="cab-title">Cab to Bengaluru Airport T2</div><div class="cab-sub">Friday, 6 November · Early-morning pickup</div></div></div>
+      <div class="cab-times"><div><span class="cab-tag">Tanu’s preferred pickup</span><strong>03:30 AM</strong></div><div><span class="cab-tag">Alternative pickup</span><strong>03:45–04:00 AM</strong></div></div>
+      <p>Allow around 90 minutes for the drive. Leaving at 3:30 AM means an estimated airport arrival around 5:00 AM; leaving at 3:45–4:00 AM means around 5:15–5:30 AM. Both provide a comfortable buffer before the 7:55 AM flight.</p>
+    </section>
 
     <section class="journey" aria-labelledby="outbound-title">
       <div class="journey-top">
         <div>
-          <div class="leg-label" id="outbound-title">Outbound · Saturday, 7 November</div>
+          <div class="leg-label" id="outbound-title">Outbound · Friday, 6 November</div>
           <div class="route"><span class="city">Bengaluru</span><span class="route-line"></span><span class="city">Chandigarh</span></div>
           <div class="home-destination">Airport for home · Chandigarh (IXC)</div>
         </div>
-        <div class="flight-meta"><span class="airline">Air India Express</span><span class="flight-number">IX 1089 · Economy</span></div>
+        <div class="flight-meta"><span class="airline">Air India Express</span><span class="flight-number">IX 1498 · Economy</span></div>
       </div>
       <div class="count-label" id="outbound-label">Time until departure</div>
       <div class="countdown" id="outbound-countdown" aria-live="off">
@@ -164,16 +139,16 @@
         <div class="unit"><span class="number" id="out-minutes">—</span><span class="unit-name">Minutes</span></div>
         <div class="unit"><span class="number" id="out-seconds">—</span><span class="unit-name">Seconds</span></div>
       </div>
-      <div class="status"><span class="dot"></span><span id="out-status">Scheduled · 09:10 AM IST</span></div>
+      <div class="status"><span class="dot"></span><span id="out-status">Scheduled · 07:55 AM IST</span></div>
       <div class="flight-details">
-        <div class="airport"><span class="time">09:10 AM</span><span class="airport-code">BENGALURU T2 · DEPARTURE</span></div>
-        <div class="duration">NON-STOP<br>3h 10m</div>
-        <div class="airport"><span class="time">12:20 PM</span><span class="airport-code">IXC · ARRIVAL</span></div>
+        <div class="airport"><span class="time">07:55 AM</span><span class="airport-code">BENGALURU T2 · DEPARTURE</span></div>
+        <div class="duration">NON-STOP<br>3h 00m</div>
+        <div class="airport"><span class="time">10:55 AM</span><span class="airport-code">IXC · ARRIVAL</span></div>
       </div>
       <div class="checkin-grid" aria-label="Outbound check-in information">
-        <div class="checkin-item"><span class="checkin-label">Recommended airport arrival</span><span class="checkin-time">07:10 AM</span><span class="checkin-date">2 hours before · Saturday, 7 November</span></div>
-        <div class="checkin-item"><span class="checkin-label">Aim to finish airport check-in by</span><span class="checkin-time">08:10 AM</span><span class="checkin-date">60 minutes before departure</span></div>
-        <div class="checkin-item online-checkin"><span class="checkin-label">Online check-in opens · 48 hours before</span><span class="checkin-time">09:10 AM</span><span class="checkin-date">Thursday, 5 November</span></div>
+        <div class="checkin-item"><span class="checkin-label">Recommended airport arrival</span><span class="checkin-time">05:55 AM</span><span class="checkin-date">2 hours before · Friday, 6 November</span></div>
+        <div class="checkin-item"><span class="checkin-label">Aim to finish airport check-in by</span><span class="checkin-time">06:55 AM</span><span class="checkin-date">60 minutes before departure</span></div>
+        <div class="checkin-item online-checkin"><span class="checkin-label">Online check-in opens · 48 hours before</span><span class="checkin-time">07:55 AM</span><span class="checkin-date">Wednesday, 4 November</span></div>
       </div>
     </section>
 
@@ -188,7 +163,7 @@
       <div class="count-label" id="return-label">Return countdown</div>
       <div id="return-locked" class="locked">
         <div class="lock-title">Countdown not started</div>
-        <div class="lock-copy">This timer activates after arrival in Chandigarh<br>on 7 November at 12:20 PM IST.</div>
+        <div class="lock-copy">This timer activates after arrival in Chandigarh<br>on 6 November at 10:55 AM IST.</div>
       </div>
       <div class="countdown" id="return-countdown" hidden aria-live="off">
         <div class="unit"><span class="number" id="ret-days">—</span><span class="unit-name">Days</span></div>
@@ -212,8 +187,8 @@
 
 
     <section class="timeline" aria-label="Trip milestones">
-      <div class="milestone" id="mile-out"><strong>7 Nov · 09:10 AM</strong><span>Depart Bengaluru</span></div>
-      <div class="milestone" id="mile-arrive"><strong>7 Nov · 12:20 PM</strong><span>Arrive Chandigarh · Continue to Maur, Bathinda · Return timer activates</span></div>
+      <div class="milestone" id="mile-out"><strong>6 Nov · 07:55 AM</strong><span>Depart Bengaluru T2</span></div>
+      <div class="milestone" id="mile-arrive"><strong>6 Nov · 10:55 AM</strong><span>Arrive Chandigarh · Continue to Maur, Bathinda · Return timer activates</span></div>
       <div class="milestone" id="mile-return"><strong>17 Nov · 12:35 AM</strong><span>Depart Chandigarh</span></div>
       <div class="milestone" id="mile-home"><strong>17 Nov · 03:50 AM</strong><span>Arrive Bengaluru</span></div>
     </section>
@@ -223,8 +198,8 @@
 
   <script>
     // Flight times are interpreted in India Standard Time (UTC+05:30).
-    const outboundDeparture = Date.parse('2026-11-07T09:10:00+05:30');
-    const outboundArrival   = Date.parse('2026-11-07T12:20:00+05:30');
+    const outboundDeparture = Date.parse('2026-11-06T07:55:00+05:30');
+    const outboundArrival   = Date.parse('2026-11-06T10:55:00+05:30');
     const returnDeparture   = Date.parse('2026-11-17T00:35:00+05:30');
     const returnArrival     = Date.parse('2026-11-17T03:50:00+05:30');
     const $ = id => document.getElementById(id);
@@ -249,10 +224,10 @@
       const outRemaining = setCountdown('out', outboundDeparture, now);
       if (now < outboundDeparture) {
         $('outbound-label').textContent = 'Time until departure';
-        $('out-status').textContent = 'Scheduled · 09:10 AM IST';
+        $('out-status').textContent = 'Scheduled · 07:55 AM IST';
       } else if (now < outboundArrival) {
         $('outbound-label').textContent = 'Flight in progress';
-        $('out-status').textContent = 'Departed · Arrival expected 12:20 PM IST';
+        $('out-status').textContent = 'Departed · Arrival expected 10:55 AM IST';
       } else {
         $('outbound-label').textContent = 'Outbound journey';
         $('out-status').textContent = 'Arrived in Chandigarh';
